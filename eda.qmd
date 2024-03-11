@@ -1,61 +1,78 @@
 ---
 title: "Penguins EDA"
-format:
-  html:
-    code-fold: true
+output:
+  html_document:
+    code_folding: true
 ---
-
+ 
 ## Penguin Size and Mass by Sex and Species
-
+ 
 ```{r}
-
-
+ 
+library(palmerpenguins)
+ 
 library(dplyr)
+ 
 library(ggplot2)
-library(knitr)
-
-# Establish connection to DuckDB
-con <- DBI::dbConnect(duckdb::duckdb(), dbdir = "my-db.duckdb")
-
-# Read the data directly from DuckDB
+ 
+df <- palmerpenguins::penguins
+```
+ 
+```{r}
+ 
+df %>%
+ 
+  group_by(species, sex) %>%
+ 
+  summarise(
+ 
+    across(
+ 
+      where(is.numeric),
+ 
+      \(x) mean(x, na.rm = TRUE)
+ 
+      )
+ 
+    ) %>%
+ 
+  knitr::kable()
+```
+ 
+## Penguin Size vs Mass by Species
+ 
+```{r}
+ 
+df %>%
+ 
+  ggplot(aes(x = bill_length_mm, y = body_mass_g, color = species)) +
+ 
+  geom_point() +
+ 
+  geom_smooth(method = "lm")
+```
+ 
+ 
+```{r}
+library(dbplyr)
+con <- DBI::dbConnect(
+  duckdb::duckdb(), 
+  dbdir = "my-db.duckdb"
+  )
 df <- dplyr::tbl(con, "penguins")
-
 ```
-
-```{r}
-
-library(dplyr)
-library(ggplot2)
-
-
-```
-
-
+ 
 ```{r}
 df %>%
   group_by(species, sex) %>%
   summarise(
-    bill_length_mm = mean(bill_length_mm, na.rm = TRUE),
-    bill_depth_mm = mean(bill_depth_mm, na.rm = TRUE),
-    flipper_length_mm = mean(flipper_length_mm, na.rm = TRUE),
-    body_mass_g = mean(body_mass_g, na.rm = TRUE)
-  ) %>%
+    across(
+        ends_with("mm") | ends_with("g"),
+      \(x) mean(x, na.rm = TRUE)
+      )
+    ) %>%
+  dplyr::collect() %>%
   knitr::kable()
-
 ```
 
-## Penguin Size vs Mass by Species
 
-
-```{r}
-df %>%
-  ggplot(aes(x = bill_length_mm, y = body_mass_g, color = species)) +
-  geom_point() + 
-  geom_smooth(method = "lm")
-DBI::dbDisconnect(con)
-```
-
-```{r}
-renv::snapshot()
-renv::restore()
-```
