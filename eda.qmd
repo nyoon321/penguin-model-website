@@ -8,12 +8,28 @@ format:
 ## Penguin Size and Mass by Sex and Species
 
 ```{r}
+
+library(DBI)
+library(duckdb)
+library(dplyr)
+library(ggplot2)
+library(knitr)
+
+# Establish connection to DuckDB
+con <- DBI::dbConnect(duckdb::duckdb(), dbdir = "my-db.duckdb")
+
+# Read the data directly from DuckDB
+df <- dplyr::tbl(con, "penguins")
+```
+
+```{r}
 library(palmerpenguins)
 library(dplyr)
 library(ggplot2)
 
-df <- palmerpenguins::penguins
+
 ```
+
 
 ```{r}
 df %>%
@@ -29,42 +45,12 @@ df %>%
 
 ## Penguin Size vs Mass by Species
 
+
 ```{r}
 df %>%
   ggplot(aes(x = bill_length_mm, y = body_mass_g, color = species)) +
   geom_point() + 
   geom_smooth(method = "lm")
-```
-
-```{r}
-library(DBI)
-library(duckdb)
-library(palmerpenguins)
-
-
-```
-
-```{r}
-library(dplyr)
-install.packages("dbplyr")
-con <- DBI::dbConnect(
-  duckdb::duckdb(),
-  dbdir = "my-db.duckdb"
-)
-df <- dplyr::tbl(con, "penguins")
-```
-
-```{r}
-df %>%
-  group_by(species, sex) %>%
-  summarise(
-    across(
-        ends_with("mm") | ends_with("g"),
-      \(x) mean(x, na.rm = TRUE)
-      )
-    ) %>%
-  dplyr::collect() %>%
-  knitr::kable()
 ```
 
 ```{r}
