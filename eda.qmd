@@ -9,7 +9,7 @@ format:
 
 ```{r}
 
-library(duckdb)
+
 library(dplyr)
 library(ggplot2)
 library(knitr)
@@ -23,7 +23,7 @@ df <- dplyr::tbl(con, "penguins")
 ```
 
 ```{r}
-library(palmerpenguins)
+
 library(dplyr)
 library(ggplot2)
 
