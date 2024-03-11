@@ -9,7 +9,6 @@ format:
 
 ```{r}
 
-library(DBI)
 library(duckdb)
 library(dplyr)
 library(ggplot2)
@@ -20,6 +19,7 @@ con <- DBI::dbConnect(duckdb::duckdb(), dbdir = "my-db.duckdb")
 
 # Read the data directly from DuckDB
 df <- dplyr::tbl(con, "penguins")
+
 ```
 
 ```{r}
@@ -35,12 +35,13 @@ library(ggplot2)
 df %>%
   group_by(species, sex) %>%
   summarise(
-    across(
-      where(is.numeric), 
-      \(x) mean(x, na.rm = TRUE)
-      )
-    ) %>%
+    bill_length_mm = mean(bill_length_mm, na.rm = TRUE),
+    bill_depth_mm = mean(bill_depth_mm, na.rm = TRUE),
+    flipper_length_mm = mean(flipper_length_mm, na.rm = TRUE),
+    body_mass_g = mean(body_mass_g, na.rm = TRUE)
+  ) %>%
   knitr::kable()
+
 ```
 
 ## Penguin Size vs Mass by Species
@@ -51,6 +52,7 @@ df %>%
   ggplot(aes(x = bill_length_mm, y = body_mass_g, color = species)) +
   geom_point() + 
   geom_smooth(method = "lm")
+DBI::dbDisconnect(con)
 ```
 
 ```{r}
