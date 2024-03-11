@@ -66,3 +66,9 @@ df %>%
   dplyr::collect() %>%
   knitr::kable()
 ```
+```{r}
+renv::snapshot()
+renv::restore()
+```
+
+
