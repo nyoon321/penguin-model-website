@@ -1,0 +1,8 @@
+"0","reticulate::repl_python()"
+"0","import duckdb"
+"0","from palmerpenguins import penguins"
+"0","con = duckdb.connect('my-db.duckdb')"
+"0","df = con.execute(""SELECT * FROM penguins"").fetchdf().dropna()"
+"0","con.close()"
+"0",""
+"0",""

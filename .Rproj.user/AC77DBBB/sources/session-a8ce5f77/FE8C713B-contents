@@ -1,0 +1,23 @@
+from vetiver import VetiverModel
+from dotenv import load_dotenv, find_dotenv
+import vetiver
+import pins
+
+load_dotenv(find_dotenv())
+
+b = pins.board_folder('data/model', allow_pickle_read=True)
+v = VetiverModel.from_pin(b, 'penguin_model', version = '20240309T194406Z-a6f9b')
+
+vetiver_api = vetiver.VetiverAPI(v)
+api = vetiver_api.app
+app.run(port=8080)
+import requests
+
+req_data = {
+  "bill_length_mm": 10,
+  "species_Chinstrap": False,
+  "species_Gentoo": False,
+  "sex_male": False
+}
+req = requests.post('http://127.0.0.1:8080/predict', json = [req_data])
+res = req.json().get('predict')[0]

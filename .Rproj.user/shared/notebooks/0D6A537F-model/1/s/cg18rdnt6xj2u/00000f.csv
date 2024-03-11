@@ -1,0 +1,41 @@
+"0","from vetiver import VetiverModel"
+"0","v = VetiverModel(model, model_name='penguin_model', prototype_data=X)"
+"0","b = pins.board_folder('data/model', allow_pickle_read=True)"
+"0","vetiver.vetiver_pin_write(b,v)"
+"2","Model Cards provide a framework for transparent, responsible reporting. 
+ Use the vetiver `.qmd` Quarto template as a place to start, 
+ with vetiver.model_card()"
+"2","
+"
+"2","Writing pin:
+Name: 'penguin_model'
+Version: 20240310T125551Z-a6f9b"
+"2","
+"
+"0","v = vetiver.VetiverModel.from_pin(b, 'penguin_model')"
+"0","app = vetiver.VetiverAPI(v, check_prototype=True)"
+"0","app.run(port=8080)"
+"2","INFO:     Started server process [21460]
+"
+"2","INFO:     Waiting for application startup.
+INFO:     VetiverAPI starting...
+INFO:     Application startup complete.
+"
+"2","INFO:     Uvicorn running on http://127.0.0.1:8080 (Press CTRL+C to quit)
+"
+"1","INFO:     127.0.0.1:55290 - ""POST /predict HTTP/1.1"" 200 OK
+"
+"1","INFO:     127.0.0.1:55305 - ""POST /predict HTTP/1.1"" 200 OK
+"
+"1","INFO:     127.0.0.1:55309 - ""POST /predict HTTP/1.1"" 200 OK
+"
+"1","INFO:     127.0.0.1:55313 - ""POST /predict HTTP/1.1"" 200 OK
+"
+"2","INFO:     Shutting down
+"
+"2","INFO:     Waiting for application shutdown.
+"
+"2","INFO:     Application shutdown complete.
+"
+"2","INFO:     Finished server process [21460]
+"

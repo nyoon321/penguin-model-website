@@ -1,0 +1,21 @@
+"0","library(reticulate)"
+"0","use_virtualenv(""myenv"", required = TRUE)"
+"0","py_install(""palmerpenguins"")"
+"1","Using virtual environment ""C:/Users/C25Nathan.Yoon/Documents/.virtualenvs/myenv"" ...
+"
+"2","+ ""C:/Users/C25Nathan.Yoon/Documents/.virtualenvs/myenv/Scripts/python.exe"" -m pip install --upgrade --no-user palmerpenguins
+"
+"1","Requirement already satisfied: palmerpenguins in c:\users\c25nat~1.yoo\docume~1\virtua~1\myenv\lib\site-packages (0.1.4)
+"
+"1","Requirement already satisfied: pandas in c:\users\c25nat~1.yoo\docume~1\virtua~1\myenv\lib\site-packages (from palmerpenguins) (2.2.1)
+"
+"1","Requirement already satisfied: numpy in c:\users\c25nat~1.yoo\docume~1\virtua~1\myenv\lib\site-packages (from palmerpenguins) (1.26.4)
+"
+"1","Requirement already satisfied: python-dateutil>=2.8.2 in c:\users\c25nat~1.yoo\docume~1\virtua~1\myenv\lib\site-packages (from pandas->palmerpenguins) (2.9.0.post0)
+"
+"1","Requirement already satisfied: pytz>=2020.1 in c:\users\c25nat~1.yoo\docume~1\virtua~1\myenv\lib\site-packages (from pandas->palmerpenguins) (2024.1)
+"
+"1","Requirement already satisfied: tzdata>=2022.7 in c:\users\c25nat~1.yoo\docume~1\virtua~1\myenv\lib\site-packages (from pandas->palmerpenguins) (2024.1)
+"
+"1","Requirement already satisfied: six>=1.5 in c:\users\c25nat~1.yoo\docume~1\virtua~1\myenv\lib\site-packages (from python-dateutil>=2.8.2->pandas->palmerpenguins) (1.16.0)
+"

@@ -1,0 +1,8 @@
+"0","quit"
+"0","reticulate::py_install(""duckdb"")"
+"1","Using virtual environment ""C:/Users/C25Nathan.Yoon/Documents/.virtualenvs/myenv"" ...
+"
+"2","+ ""C:/Users/C25Nathan.Yoon/Documents/.virtualenvs/myenv/Scripts/python.exe"" -m pip install --upgrade --no-user duckdb
+"
+"1","Requirement already satisfied: duckdb in c:\users\c25nat~1.yoo\docume~1\virtua~1\myenv\lib\site-packages (0.10.0)
+"

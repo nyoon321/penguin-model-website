@@ -1,0 +1,13 @@
+"0","library(reticulate)"
+"2","
+Attaching package: ‘reticulate’
+
+"
+"2","The following object is masked _by_ ‘.GlobalEnv’:
+
+    py
+
+"
+"0","virtualenv_create(envname = ""myenv"")"
+"1","virtualenv: myenv
+"

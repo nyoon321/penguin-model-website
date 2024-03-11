@@ -1,0 +1,4 @@
+"0","library(reticulate)"
+"0","virtualenv_create(envname = ""myenv"")"
+"1","virtualenv: myenv
+"

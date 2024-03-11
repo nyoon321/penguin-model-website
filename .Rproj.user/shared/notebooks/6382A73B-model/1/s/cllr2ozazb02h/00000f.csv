@@ -1,0 +1,16 @@
+"0","install.packages(""reticulate"")"
+"1","The following package(s) will be installed:
+"
+"1","- reticulate [1.35.0]
+"
+"1","These packages will be installed into ""~/Math378 FP/renv/library/R-4.3/x86_64-w64-mingw32"".
+"
+"1","
+"
+"1","# Installing packages --------------------------------------------------------
+"
+"1","- Installing reticulate ...                     "
+"1","OK [linked from cache]
+"
+"1","Successfully installed 1 package in 51 milliseconds.
+"
